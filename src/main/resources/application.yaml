@@ -1,8 +1,27 @@
+#spring:
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/followup
+#    username: postgres
+#    password: 1234
+#    driver-class-name: org.postgresql.Driver
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+#    database: postgresql
+#    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+#DatabaseConnector:DBMS://hostname:port/database
+
+
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/followup
-    username: postgres
-    password: 1234
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/followup}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:1234}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -14,4 +33,5 @@ spring:
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
-#DatabaseConnector:DBMS://hostname:port/database
+server:
+  port: ${PORT:8080}
