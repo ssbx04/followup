@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk-alpine as build
+FROM eclipse-temurin:21-jdk-alpine as build
 WORKDIR /workspace/app
 
 # Copier les fichiers Maven
@@ -19,7 +19,7 @@ COPY src src
 RUN ./mvnw package -DskipTests
 
 # Phase finale - image légère
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
 # Copier le JAR depuis la phase build
