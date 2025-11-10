@@ -2,6 +2,8 @@ package com.csroot.followup.questionnaire;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Questionnaire {
     @Id
@@ -17,8 +19,25 @@ public class Questionnaire {
     @Column(name = "patient_phone", nullable = false)
     private String patientPhone;
 
+    @Column(name = "date", nullable = false)
+    private LocalDateTime date;
+
     @Embedded
     private Symptoms symptoms;
+    @PrePersist
+    protected void onCreate() {
+        if (date == null) {
+            date = LocalDateTime.now(); // 🆕 Auto-générer la date à la création
+        }
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
 
     public Long getId() {
         return id;

@@ -15,7 +15,7 @@ public class QuestionnaireMapper {
         entity.setPatientName(dto.patientName());
         entity.setPatientPhone(dto.patientPhone());
         entity.setSymptoms(toSymptomsEntity(dto.symptoms()));
-
+        entity.setDate(dto.date());
         return entity;
     }
 
@@ -32,6 +32,7 @@ public class QuestionnaireMapper {
                 entity.getFilledBy(),
                 entity.getPatientName(),
                 entity.getPatientPhone(),
+                entity.getDate(),
                 toSymptomsDTO(entity.getSymptoms())
         );
     }
